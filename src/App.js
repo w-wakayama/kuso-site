@@ -8,9 +8,8 @@ class App extends Component {
     super(props)
     this.state = {
       todo: [
-       { title: 'うんち', scrollamount: 6 } ,
-       { title: 'Reactすごい', scrollamount: 6 } ,
-       { title: 'ラーメン食べたい', scrollamount: 6 } ,
+       { title: 'うんち💩 💩 💩', scrollamount: 3 } ,
+       { title: 'Reactすごい', scrollamount: 9 } ,
        { title: '明治大学', scrollamount: 6 }
       ]
     };
@@ -19,7 +18,8 @@ class App extends Component {
   addTodo() {
     // 追加
     this.state.todo.push({
-      title: this.refs.newText.value
+      title: this.refs.newText.value,
+      scrollamount: this.refs.newScroll.value
     });
     // 保存
     this.setState({
@@ -27,6 +27,7 @@ class App extends Component {
     });
     // 初期化
     this.refs.newText.value='';
+    this.refs.newScroll.value='';
   }
 
   render () {
@@ -37,7 +38,10 @@ class App extends Component {
             return <marquee key={i} scrollamount={todo.scrollamount}> {todo.title}</marquee>
           })}
         </ul>
+        <p>なまえ</p>
         <input type="text" ref="newText"/>
+        <p>はやさ</p>
+        <input type="scroll" ref="newScroll"/>
         <input type="button" value="追加" onClick={this.addTodo}/>
       </div>
     )
